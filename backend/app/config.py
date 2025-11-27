@@ -17,6 +17,12 @@ class Settings(BaseSettings):
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 15
     REFRESH_TOKEN_EXPIRE_DAYS: int = 30 
 
+    #Для хронения секретных ключев
+    GOOGLE_CLIENT_ID: str = "534325035703-t431d22s1mdrl596u76uikbd9mov36gk.apps.googleusercontent.com"
+    GOOGLE_CLIENT_SECRET_KEY: str = "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"
+    GOOGLE_REDIRECT_URI: str = "http://127.0.0.1:8000/auth/google/callback/"
+
+
 
     class Config:
         env_file  = ".env"
