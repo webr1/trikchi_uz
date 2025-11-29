@@ -25,7 +25,9 @@ class Settings(BaseSettings):
     GOOGLE_REDIRECT_URI: str 
 
 
-
+    STRIPE_SECRET_KEY: str
+    STRIPE_WEBHOOK_SECRET: str
+    STRIPE_PUBLISHABLE_KEY: str | None = None
 
     class Config:
         env_file  = ".env"
