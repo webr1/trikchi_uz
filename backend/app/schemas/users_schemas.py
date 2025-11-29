@@ -52,3 +52,23 @@ class SocialAccountResponse(ORMBase):
 """ СХЕМА: Полный профиль (User + Socials) """
 class UserFullResponse(UserResponse):
     social_accounts: List[SocialAccountResponse] = []
+
+
+class UserUpdate(BaseModel):
+    name: Optional[str] = None
+    email: Optional[EmailStr] = None
+    phone: Optional[str] = None
+    avatar_url: Optional[str] = None
+    password: Optional[str] = None
+
+    @field_validator("password")
+    def validate_password(cls, password):
+        if password is None:
+            return password
+        if len(password) < 8:
+            raise ValueError("Password must be at least 8 characters")
+        if not re.search(r"[A-Za-z]", password):
+            raise ValueError("Password must include letters")
+        if not re.search(r"\d", password):
+            raise ValueError("Password must include digits")
+        return password
