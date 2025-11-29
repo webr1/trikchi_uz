@@ -6,6 +6,7 @@ from .routers.wishlist_router import router as wishlist_router
 from .routers.order_router import router as order_router
 from .routers.order_item_routre import router as order_item_router
 from backend.app.database import Base,engine
+from .routers.stripe_router import router as stripe_router
 
 Base.metadata.create_all(bind=engine)
 
@@ -18,5 +19,6 @@ app.include_router(product_router)
 app.include_router(wishlist_router)
 app.include_router(order_router)
 app.include_router(order_item_router)
+app.include_router(stripe_router)
 
 
